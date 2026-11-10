@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Листик — ожидает посадки</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+a:active{transform:scale(.96)}
+@keyframes stem{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.6);opacity:0}}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.stem{transform-origin:top;animation:stem .6s cubic-bezier(.33,1,.68,1) both}
+.pulse{animation:pulse 1.6s ease-in-out infinite}
+.sway{animation:sway 4s ease-in-out infinite;transform-origin:50% 100%;transform-box:fill-box}
+.scroll::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion: reduce){.stem,.pulse,.sway{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto; scrollbar-width: none">
+    <div style="padding: 52px 20px 110px; display: flex; flex-direction: column; gap: 16px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <a href="Forest.dc.html" aria-label="Назад в Мой лес" style="width: 48px; height: 48px; border-radius: 16px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(35,64,16,0.08); flex: none">
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+        </a>
+        <span style="font-size: 13px; color: #4E5A44; font-variant-numeric: tabular-nums">PT-ALM-000127</span>
+      </div>
+
+      <section style="background: #DCE6D3; border-radius: 24px; padding: 16px; display: flex; gap: 14px; align-items: center">
+        <div style="width: 110px; height: 120px; border-radius: 18px; background: #F6F1E7; display: flex; align-items: flex-end; justify-content: center; flex: none">
+          <svg role="img" aria-label="Иллюстрация карагача" width="96" height="110" viewBox="0 0 110 120"><ellipse cx="55" cy="114" rx="34" ry="5" fill="#B3C3AA"></ellipse><rect x="51" y="62" width="8" height="52" rx="3" fill="#6B4A2B"></rect><g class="sway"><circle cx="55" cy="50" r="30" fill="#4F7A2A"></circle><circle cx="36" cy="62" r="18" fill="#3F6620"></circle><circle cx="74" cy="60" r="20" fill="#6E9A43"></circle></g></svg>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="align-self: flex-start; height: 28px; padding: 0 12px; border-radius: 999px; background: #FBF1DC; color: #6E4A00; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #E3B04B"></span>Ожидает посадки</span>
+          <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 700; color: #234010">Листик</h1>
+          <span style="font-size: 14px; color: #33402A">Карагач · 100% собрано</span>
+        </div>
+      </section>
+
+      <section aria-label="Почему пока нет фото" style="background: #FFFFFF; border-radius: 24px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 8px 24px rgba(35,64,16,0.08)">
+        <div style="display: flex; gap: 10px; align-items: center">
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A5A00" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+          <h2 style="margin: 0; font-size: 16px; font-weight: 800; color: #1E2B14">Почему пока нет фото?</h2>
+        </div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #33402A">Партнёр-исполнитель подбирает место и сезонное окно для посадки. Фото, координаты и дату вы увидите, только когда исполнитель подтвердит реальную посадку — никаких «примерных» снимков.</p>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 4px">
+          <div style="background: #F6F1E7; border-radius: 14px; padding: 10px"><div style="font-size: 11px; color: #4E5A44">Место</div><div style="font-size: 13px; font-weight: 700; color: #6B7560">—</div></div>
+          <div style="background: #F6F1E7; border-radius: 14px; padding: 10px"><div style="font-size: 11px; color: #4E5A44">Дата</div><div style="font-size: 13px; font-weight: 700; color: #6B7560">—</div></div>
+          <div style="background: #F6F1E7; border-radius: 14px; padding: 10px"><div style="font-size: 11px; color: #4E5A44">Координаты</div><div style="font-size: 13px; font-weight: 700; color: #6B7560">—</div></div>
+        </div>
+      </section>
+
+      <section aria-label="Статусы дерева" style="background: #FFFFFF; border-radius: 24px; padding: 18px; box-shadow: 0 8px 24px rgba(35,64,16,0.08)">
+        <h2 style="margin: 0 0 14px; font-size: 16px; font-weight: 800">Путь дерева</h2>
+        <ol style="margin: 0; padding: 0; list-style: none; position: relative">
+          <span aria-hidden="true" style="position: absolute; left: 13px; top: 14px; bottom: 14px; width: 3px; border-radius: 2px; background: #E4E9DE"></span>
+          <span class="stem" aria-hidden="true" style="position: absolute; left: 13px; top: 14px; height: 168px; width: 3px; border-radius: 2px; background: #4F7A2A"></span>
+          <sc-for list="{{steps}}" as="s" hint-placeholder-count="6">
+            <li style="position: relative; display: flex; gap: 14px; min-height: 56px">
+              <span style="position: relative; width: 29px; height: 29px; flex: none; display: flex; align-items: center; justify-content: center">
+                <sc-if value="{{s.cur}}" hint-placeholder-val="{{ false }}"><span class="pulse" style="position: absolute; inset: 0; border-radius: 50%; background: #E3B04B"></span></sc-if>
+                <span style="position: relative; width: 22px; height: 22px; border-radius: 50%; background: {{s.fill}}; border: 3px solid {{s.ring}}; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+                  <sc-if value="{{s.done}}" hint-placeholder-val="{{ true }}"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></sc-if>
+                </span>
+              </span>
+              <div style="display: flex; flex-direction: column; gap: 2px; padding-top: 3px">
+                <span style="font-size: 15px; font-weight: 700; color: {{s.tc}}">{{s.t}}</span>
+                <span style="font-size: 13px; color: #4E5A44; font-variant-numeric: tabular-nums">{{s.d}}</span>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+      </section>
+    </div>
+  </div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 20px 28px; background: rgba(246,241,231,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px)">
+    <a href="TreePlanted.dc.html" style="height: 52px; border-radius: 16px; border: 1.5px dashed #4F7A2A; color: #234010; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center">Демо: исполнитель подтвердил посадку</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const raw = [
+      ['Заказ оформлен', '9 ноября 2026', 'done'],
+      ['Дерево выращено до 100%', '9 ноября 2026', 'done'],
+      ['Передано исполнителю', '[Партнёр-исполнитель] · 10 ноября', 'done'],
+      ['Ожидает посадки', 'Обычно до 14 дней в сезон посадок', 'cur'],
+      ['Посажено', 'Фото и координаты от исполнителя', 'todo'],
+      ['На мониторинге', 'Уход и полив первый год', 'todo']
+    ];
+    return {
+      steps: raw.map(([t, d, k]) => ({
+        t, d, done: k === 'done', cur: k === 'cur',
+        fill: k === 'done' ? '#4F7A2A' : (k === 'cur' ? '#FFFFFF' : '#FFFFFF'),
+        ring: k === 'done' ? '#4F7A2A' : (k === 'cur' ? '#E3B04B' : '#D2DAC9'),
+        tc: k === 'todo' ? '#6B7560' : '#1E2B14'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

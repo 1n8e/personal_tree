@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Заказ оформлен</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+a:active{transform:scale(.96)}
+@keyframes draw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
+@keyframes hide{0%,55%{opacity:1}75%,100%{opacity:0}}
+@keyframes leaf{0%,55%{opacity:0;transform:scale(.4) rotate(-40deg)}80%{opacity:1;transform:scale(1.1) rotate(4deg)}100%{opacity:1;transform:none}}
+@keyframes fall{0%{transform:translateY(-40px) rotate(0);opacity:0}10%{opacity:1}100%{transform:translateY(560px) rotate(300deg);opacity:0}}
+@keyframes row{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.chk{stroke-dasharray:60;animation:draw .4s .1s cubic-bezier(.33,1,.68,1) both, hide 1.2s both}
+.lf{animation:leaf 1.2s cubic-bezier(.34,1.56,.64,1) both;transform-origin:center;transform-box:fill-box}
+.cf{position:absolute;top:0;animation:fall 2.4s cubic-bezier(.3,.2,.6,1) infinite}
+.row{animation:row .3s cubic-bezier(.33,1,.68,1) both}
+@media (prefers-reduced-motion: reduce){.chk{animation:none;opacity:0}.lf,.row{animation:none}.cf{display:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <sc-for list="{{conf}}" as="c" hint-placeholder-count="0">
+    <svg class="cf" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="left: {{c.x}}; animation-delay: {{c.d}}"><path d="M12 22C6 18 4 12 6 4c8 0 14 6 12 14-2 3-4 4-6 4z" fill="{{c.c}}"></path></svg>
+  </sc-for>
+
+  <div style="position: absolute; left: 24px; right: 24px; top: 84px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+    <div style="width: 112px; height: 112px; border-radius: 50%; background: #DCE6D3; display: flex; align-items: center; justify-content: center; position: relative">
+      <svg role="img" aria-label="Готово" width="64" height="64" viewBox="0 0 24 24" fill="none">
+        <path class="chk" d="M5 12.5l4.5 4.5L19 7" stroke="#234010" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <g class="lf"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" fill="#4F7A2A"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" stroke="#234010" stroke-width="1.75" stroke-linecap="round"></path></g>
+      </svg>
+    </div>
+    <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 700; color: #234010; line-height: 1.15">Листик начал расти</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4E5A44">Первый взнос получен. Дерево в вашем лесу — растите его до 100%, и мы передадим заказ на посадку.</p>
+  </div>
+
+  <section aria-label="Детали заказа" style="position: absolute; left: 20px; right: 20px; top: 380px; background: #FFFFFF; border-radius: 24px; padding: 8px 18px; box-shadow: 0 8px 24px rgba(35,64,16,0.08)">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="5">
+      <div class="row" style="animation-delay: {{r.d}}; display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: {{r.line}}">
+        <span style="font-size: 14px; color: #4E5A44">{{r.k}}</span>
+        <span style="font-size: 14px; font-weight: 700; color: #1E2B14; text-align: right; font-variant-numeric: tabular-nums">{{r.v}}</span>
+      </div>
+    </sc-for>
+  </section>
+
+  <div style="position: absolute; left: 20px; right: 20px; top: 640px; display: flex; gap: 12px; align-items: flex-start; background: #FBF1DC; border-radius: 20px; padding: 14px 16px">
+    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A5A00" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+    <span style="font-size: 13px; line-height: 1.45; color: #4A3A12">Мы сообщим, когда исполнитель подтвердит посадку. Фото, координаты и дата появятся только после этого.</span>
+  </div>
+
+  <div style="position: absolute; left: 20px; right: 20px; bottom: 32px; display: flex; gap: 10px">
+    <a href="Home.dc.html" style="flex: 1; height: 56px; border-radius: 16px; background: #DCE6D3; color: #234010; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center">На главную</a>
+    <a href="Growth.dc.html" style="flex: 1.4; height: 56px; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center">Следить за ростом</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const rows = [
+      ['Дерево', 'Карагач «Листик»'],
+      ['Номер', 'PT-ALM-000127'],
+      ['Способ', 'Взносами · 2 000 ₸/мес'],
+      ['Внесено', '2 000 из 6 000 ₸'],
+      ['Статус', 'Растёт · 33%']
+    ];
+    const cols = ['#4F7A2A', '#6E9A43', '#B3C3AA', '#E3B04B'];
+    const conf = [];
+    for (let i = 0; i < 18; i++) conf.push({ x: (12 + (i * 53) % 366) + 'px', d: (i * 130) % 2400 + 'ms', c: cols[i % 4] });
+    return {
+      conf,
+      rows: rows.map((r, i) => ({ k: r[0], v: r[1], d: (300 + i * 60) + 'ms', line: i < rows.length - 1 ? '1px solid #EEF0E8' : '0' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

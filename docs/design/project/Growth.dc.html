@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Рост дерева</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+button{font-family:inherit;cursor:pointer}
+button:active,a:active{transform:scale(.96)}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes morph{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes drop{0%{transform:translateY(-120px);opacity:0}15%{opacity:1}70%{transform:translateY(0)}82%{transform:translateY(-10px)}100%{transform:translateY(0);opacity:0}}
+@keyframes pts{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-24px);opacity:0}}
+.sway{animation:sway 4s ease-in-out infinite;transform-origin:50% 100%;transform-box:fill-box}
+.morph{animation:morph .45s cubic-bezier(.34,1.56,.64,1) both}
+.drop{position:absolute;top:150px;animation:drop .9s cubic-bezier(.3,.2,.6,1) both}
+.pts{animation:pts .9s cubic-bezier(.33,1,.68,1) both}
+.arc{transition:stroke-dashoffset .6s cubic-bezier(.33,1,.68,1)}
+@media (prefers-reduced-motion: reduce){.sway,.morph,.drop,.pts{animation:none}.drop{display:none}.arc{transition:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <div style="position: absolute; top: 52px; left: 16px; right: 20px; display: flex; align-items: center; justify-content: space-between">
+    <a href="Home.dc.html" aria-label="На главную" style="width: 48px; height: 48px; border-radius: 16px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(35,64,16,0.08)">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+    </a>
+    <div style="text-align: center">
+      <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; color: #234010">Листик</div>
+      <div style="font-size: 12px; color: #4E5A44; font-variant-numeric: tabular-nums">Карагач · PT-ALM-000127</div>
+    </div>
+    <span style="width: 48px"></span>
+  </div>
+
+  <div style="position: absolute; left: 55px; top: 130px; width: 280px; height: 280px">
+    <svg aria-hidden="true" width="280" height="280" viewBox="0 0 280 280" style="position: absolute; inset: 0; transform: rotate(-90deg)">
+      <circle cx="140" cy="140" r="118" fill="none" stroke="#DCE6D3" stroke-width="16"></circle>
+      <circle class="arc" cx="140" cy="140" r="118" fill="none" stroke="#4F7A2A" stroke-width="16" stroke-linecap="round" stroke-dasharray="741.4" stroke-dashoffset="{{offset}}"></circle>
+    </svg>
+    <div style="position: absolute; left: 30px; top: 30px; width: 220px; height: 220px; border-radius: 50%; background: #FFFFFF; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
+      <svg class="morph" key="{{stage}}" role="img" aria-label="Стадия: {{stageName}}" width="200" height="200" viewBox="0 0 200 200">
+        <ellipse cx="100" cy="178" rx="70" ry="14" fill="#B3C3AA"></ellipse>
+        <ellipse cx="100" cy="174" rx="50" ry="8" fill="#8A6A44"></ellipse>
+        <sc-if value="{{st0}}" hint-placeholder-val="{{ false }}"><ellipse cx="100" cy="166" rx="9" ry="12" fill="#6B4A2B"></ellipse><path d="M100 156 c0-6 3-9 6-10" stroke="#6E9A43" stroke-width="3" stroke-linecap="round" fill="none"></path></sc-if>
+        <sc-if value="{{st1}}" hint-placeholder-val="{{ true }}"><g class="sway"><path d="M100 172 V130" stroke="#4F7A2A" stroke-width="5" stroke-linecap="round"></path><path d="M100 142 C84 140 74 128 76 112 C92 114 100 126 100 142Z" fill="#4F7A2A"></path><path d="M101 136 C116 132 126 120 124 104 C108 108 100 120 101 136Z" fill="#6E9A43"></path></g></sc-if>
+        <sc-if value="{{st2}}" hint-placeholder-val="{{ false }}"><rect x="97" y="120" width="6" height="54" rx="3" fill="#6B4A2B"></rect><g class="sway"><circle cx="100" cy="106" r="28" fill="#4F7A2A"></circle><circle cx="80" cy="118" r="16" fill="#3F6620"></circle><circle cx="120" cy="116" r="17" fill="#6E9A43"></circle></g></sc-if>
+        <sc-if value="{{st3}}" hint-placeholder-val="{{ false }}"><rect x="95" y="100" width="10" height="74" rx="4" fill="#6B4A2B"></rect><g class="sway"><circle cx="100" cy="80" r="42" fill="#4F7A2A"></circle><circle cx="68" cy="100" r="26" fill="#3F6620"></circle><circle cx="132" cy="96" r="28" fill="#6E9A43"></circle></g></sc-if>
+        <sc-if value="{{st4}}" hint-placeholder-val="{{ false }}"><rect x="94" y="96" width="12" height="78" rx="4" fill="#6B4A2B"></rect><g class="sway"><circle cx="100" cy="74" r="48" fill="#4F7A2A"></circle><circle cx="64" cy="98" r="28" fill="#3F6620"></circle><circle cx="136" cy="94" r="30" fill="#6E9A43"></circle><circle cx="86" cy="60" r="5" fill="#E3B04B"></circle><circle cx="120" cy="76" r="4" fill="#E3B04B"></circle></g></sc-if>
+      </svg>
+    </div>
+    <sc-for list="{{drops}}" as="d" hint-placeholder-count="0">
+      <svg class="drop" key="{{d.k}}" aria-hidden="true" width="22" height="26" viewBox="0 0 24 28" style="left: {{d.x}}; animation-delay: {{d.delay}}"><path d="M12 2s8 9 8 15a8 8 0 0 1-16 0c0-6 8-15 8-15z" fill="#E3B04B" stroke="#B5832A" stroke-width="1.5"></path></svg>
+    </sc-for>
+    <sc-if value="{{showPts}}" hint-placeholder-val="{{ false }}">
+      <span class="pts" key="{{burstKey}}" style="position: absolute; right: -6px; top: 12px; height: 32px; padding: 0 12px; border-radius: 999px; background: #234010; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; animation-delay: .5s">+20 эко-баллов</span>
+    </sc-if>
+  </div>
+
+  <div style="position: absolute; left: 20px; right: 20px; top: 424px; text-align: center">
+    <div style="font-size: 40px; font-weight: 800; color: #234010; font-variant-numeric: tabular-nums; line-height: 1">{{pct}}%</div>
+    <div style="margin-top: 6px; font-size: 14px; color: #4E5A44; font-variant-numeric: tabular-nums">{{paidLabel}} из 6 000 ₸ · стадия «{{stageName}}»</div>
+  </div>
+
+  <ol aria-label="Стадии роста" style="position: absolute; left: 20px; right: 20px; top: 500px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+    <sc-for list="{{stages}}" as="s" hint-placeholder-count="5">
+      <li style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+        <span style="width: 100%; height: 6px; border-radius: 3px; background: {{s.c}}; transition: background .3s"></span>
+        <span style="font-size: 11px; font-weight: {{s.w}}; color: {{s.tc}}">{{s.name}}</span>
+      </li>
+    </sc-for>
+  </ol>
+
+  <section aria-label="Пополнение" style="position: absolute; left: 20px; right: 20px; top: 560px; background: #FFFFFF; border-radius: 24px; padding: 16px; box-shadow: 0 8px 24px rgba(35,64,16,0.08); display: flex; flex-direction: column; gap: 12px">
+    <span style="font-size: 15px; font-weight: 700">Сумма пополнения</span>
+    <div style="display: flex; gap: 8px">
+      <sc-for list="{{amts}}" as="a" hint-placeholder-count="3">
+        <button onClick="{{a.pick}}" style="flex: 1; height: 48px; border-radius: 14px; border: 1.5px solid {{a.border}}; background: {{a.bg}}; color: #234010; font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums">{{a.label}}</button>
+      </sc-for>
+    </div>
+    <span style="font-size: 13px; color: #4E5A44">Каждые 1 000 ₸ = +10 эко-баллов</span>
+  </section>
+
+  <sc-if value="{{notFull}}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{topUp}}" style="position: absolute; left: 20px; right: 20px; bottom: 32px; height: 56px; border: 0; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700">Пополнить на {{amtLabel}}</button>
+  </sc-if>
+  <sc-if value="{{full}}" hint-placeholder-val="{{ false }}">
+    <a href="GrowthDone.dc.html" style="position: absolute; left: 20px; right: 20px; bottom: 32px; height: 56px; border-radius: 16px; background: #4F7A2A; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center">Дерево готово к посадке</a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { paid: 3840, amt: 2000, burst: 0 }; }
+  renderVals() {
+    const s = this.state;
+    const fmt = (v) => v.toLocaleString('ru-RU').replace(/ /g, ' ');
+    const p = Math.min(1, s.paid / 6000);
+    const pct = Math.round(p * 100);
+    const st = pct >= 100 ? 4 : pct >= 60 ? 3 : pct >= 40 ? 2 : pct >= 20 ? 1 : 0;
+    const names = ['Семя', 'Росток', 'Саженец', 'Молодое', 'Готово'];
+    const drops = [];
+    if (s.burst > 0) for (let i = 0; i < 7; i++) drops.push({ k: s.burst + '-' + i, x: (70 + i * 22) + 'px', delay: (i * 80) + 'ms' });
+    return {
+      offset: (741.4 * (1 - p)).toFixed(1),
+      pct, paidLabel: fmt(Math.min(6000, s.paid)) + ' ₸',
+      stage: st, stageName: names[st],
+      st0: st === 0, st1: st === 1, st2: st === 2, st3: st === 3, st4: st === 4,
+      stages: names.map((n, i) => ({ name: n, c: i <= st ? '#4F7A2A' : '#DCE6D3', tc: i === st ? '#234010' : '#4E5A44', w: i === st ? 800 : 600 })),
+      amts: [1000, 2000, 3000].map((v) => ({ label: fmt(v) + ' ₸', bg: v === s.amt ? '#DCE6D3' : '#FFFFFF', border: v === s.amt ? '#4F7A2A' : '#B3C3AA', pick: () => this.setState({ amt: v }) })),
+      amtLabel: fmt(s.amt) + ' ₸',
+      topUp: () => this.setState({ paid: Math.min(6000, this.state.paid + this.state.amt), burst: this.state.burst + 1 }),
+      drops, showPts: s.burst > 0, burstKey: s.burst,
+      full: pct >= 100, notFull: pct < 100
+    };
+  }
+}
+</script>
+</body>
+</html>

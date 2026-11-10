@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Онбординг</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+button{font-family:inherit;cursor:pointer}
+.mv{transition:transform .45s cubic-bezier(.2,0,0,1), stroke-dashoffset .6s cubic-bezier(.2,0,0,1), opacity .3s}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.sway{animation:sway 4s ease-in-out infinite;transform-origin:50% 100%;transform-box:fill-box}
+@media (prefers-reduced-motion: reduce){.sway{animation:none}.mv{transition:opacity .2s}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <svg class="mv" aria-hidden="true" width="780" height="844" viewBox="0 0 780 844" fill="none" stroke="#234010" stroke-width="1.2" style="position: absolute; top: 0; left: 0; opacity: 0.05; transform: {{bgShift}}">
+    <path d="M-20 90C90 50 170 140 270 95S420 70 520 110 700 80 800 120"></path><path d="M-20 140C90 100 170 190 270 145S420 120 520 160 700 130 800 170"></path><path d="M-20 190C90 150 170 240 270 195S420 170 520 210 700 180 800 220"></path><path d="M-20 600C90 560 170 650 270 610S420 580 520 620 700 590 800 630"></path><path d="M-20 650C90 610 170 700 270 660S420 630 520 670 700 640 800 680"></path>
+  </svg>
+  <div style="position: absolute; top: 56px; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: center">
+    <div style="display: inline-flex; align-items: center; gap: 6px; background: #D9E9F2; padding: 6px 14px 6px 10px; border-radius: 22px 26px 20px 24px">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F7A2A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+      <span style="font-family: 'Caveat', cursive; font-size: 22px; font-weight: 700; color: #234010; line-height: 1">Personal tree</span>
+    </div>
+    <a href="Auth.dc.html" style="min-height: 48px; display: flex; align-items: center; padding: 0 8px; font-size: 15px; font-weight: 600; color: #4E5A44">Пропустить</a>
+  </div>
+
+  <svg aria-hidden="true" width="390" height="120" viewBox="0 0 390 120" fill="none" style="position: absolute; left: 0; top: 476px">
+    <path d="M-10 70 C 60 20, 110 110, 190 60 S 320 20, 400 70" stroke="#B3C3AA" stroke-width="4" stroke-linecap="round"></path>
+    <path class="mv" d="M-10 70 C 60 20, 110 110, 190 60 S 320 20, 400 70" stroke="#4F7A2A" stroke-width="4" stroke-linecap="round" stroke-dasharray="460" stroke-dashoffset="{{vineOffset}}"></path>
+    <path d="M70 52 c-10-12-6-24 6-30 c4 12 2 22-6 30z" fill="#4F7A2A"></path>
+    <path d="M190 60 c10-14 24-16 34-10 c-8 10-20 14-34 10z" fill="#6E9A43"></path>
+    <path d="M310 44 c-12-8-14-22-6-32 c10 8 12 20 6 32z" fill="#4F7A2A"></path>
+  </svg>
+
+  <div style="position: absolute; left: 0; right: 0; top: 130px; height: 340px; display: flex; align-items: center; justify-content: center">
+    <sc-if value="{{s1}}" hint-placeholder-val="{{ true }}">
+      <svg role="img" aria-label="Росток в ладонях" width="300" height="300" viewBox="0 0 300 300">
+        <circle cx="150" cy="160" r="120" fill="#DCE6D3"></circle>
+        <g class="sway"><path d="M150 200 C150 170 152 150 150 120" stroke="#4F7A2A" stroke-width="6" stroke-linecap="round" fill="none"></path><path d="M150 140 C128 136 112 118 116 96 C136 98 150 116 150 140Z" fill="#4F7A2A"></path><path d="M151 130 C172 124 188 106 186 84 C164 88 150 106 151 130Z" fill="#6E9A43"></path></g>
+        <path d="M70 210 C90 190 120 196 150 206 C180 196 210 190 230 210 C214 244 186 256 150 256 C114 256 86 244 70 210Z" fill="#E7C9A3"></path>
+        <path d="M78 212 C100 200 126 206 150 212 C174 206 200 200 222 212" stroke="#C9A57C" stroke-width="3" fill="none"></path>
+        <ellipse cx="150" cy="206" rx="44" ry="10" fill="#8A6A44"></ellipse>
+      </svg>
+    </sc-if>
+    <sc-if value="{{s2}}" hint-placeholder-val="{{ false }}">
+      <svg role="img" aria-label="Росток в горшке с табличкой имени" width="300" height="300" viewBox="0 0 300 300">
+        <circle cx="150" cy="160" r="120" fill="#D9E9F2"></circle>
+        <g class="sway"><path d="M150 190 C150 160 152 140 150 104" stroke="#4F7A2A" stroke-width="6" stroke-linecap="round" fill="none"></path><path d="M150 128 C126 124 110 104 114 80 C136 84 150 104 150 128Z" fill="#4F7A2A"></path><path d="M151 116 C174 110 190 90 188 66 C164 70 150 92 151 116Z" fill="#6E9A43"></path></g>
+        <path d="M104 190 H196 L186 256 H114 Z" fill="#C97B4A"></path><rect x="98" y="182" width="104" height="18" rx="6" fill="#B26A3C"></rect>
+        <rect x="188" y="196" width="78" height="34" rx="10" fill="#FFFFFF" stroke="#234010" stroke-width="2"></rect>
+        <path d="M188 210 L170 196" stroke="#234010" stroke-width="2"></path>
+        <text x="227" y="219" text-anchor="middle" font-family="Caveat, cursive" font-size="20" font-weight="700" fill="#234010">Листик</text>
+      </svg>
+    </sc-if>
+    <sc-if value="{{s3}}" hint-placeholder-val="{{ false }}">
+      <svg role="img" aria-label="Дерево на фоне гор Алматы" width="300" height="300" viewBox="0 0 300 300">
+        <circle cx="150" cy="160" r="120" fill="#DCE6D3"></circle>
+        <path d="M40 210 L95 120 L130 170 L175 96 L262 210Z" fill="#B3C3AA"></path>
+        <path d="M160 118 L175 96 L192 120 L182 116 L175 124 L168 116Z" fill="#FFFFFF"></path>
+        <path d="M30 220 C90 200 210 200 270 220 L270 260 L30 260Z" fill="#8FB070"></path>
+        <rect x="144" y="170" width="12" height="54" rx="4" fill="#6B4A2B"></rect>
+        <g class="sway"><circle cx="150" cy="150" r="38" fill="#4F7A2A"></circle><circle cx="126" cy="166" r="24" fill="#3F6620"></circle><circle cx="176" cy="164" r="26" fill="#6E9A43"></circle></g>
+      </svg>
+    </sc-if>
+  </div>
+
+  <div style="position: absolute; left: 24px; right: 24px; top: 596px">
+    <p style="margin: 0 0 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4F7A2A">Шаг {{stepNo}} из 3</p>
+    <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 32px; line-height: 1.15; font-weight: 700; color: #234010">{{title}}</h1>
+    <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #4E5A44">{{text}}</p>
+  </div>
+
+  <div style="position: absolute; left: 24px; right: 24px; bottom: 40px; display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; gap: 10px; align-items: center" aria-label="Страница {{stepNo}} из 3">
+      <sc-for list="{{dots}}" as="d" hint-placeholder-count="3">
+        <button aria-label="{{d.label}}" onClick="{{d.go}}" style="width: 28px; height: 48px; border: 0; padding: 0; background: transparent; display: flex; align-items: center; justify-content: center">
+          <svg class="mv" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="transform: {{d.scale}}"><path d="M12 22C6 18 4 12 6 4c8 0 14 6 12 14-2 3-4 4-6 4z" fill="{{d.color}}"></path></svg>
+        </button>
+      </sc-for>
+    </div>
+    <sc-if value="{{notLast}}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{next}}" style="height: 56px; padding: 0 28px; border: 0; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px">Далее
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </button>
+    </sc-if>
+    <sc-if value="{{isLast}}" hint-placeholder-val="{{ false }}">
+      <a href="Auth.dc.html" style="height: 56px; padding: 0 32px; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center">Начать</a>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { i: 0 }; }
+  renderVals() {
+    const i = this.state.i;
+    const slides = [
+      { t: 'Получи росток', x: 'Выберите вид дерева — карагач, клён, ель или берёзу. Это ваше личное дерево в Алматы.' },
+      { t: 'Дай имя', x: 'Назовите дерево так, как хочется. Под этим именем оно будет расти в приложении и на карте.' },
+      { t: 'Расти и посади в Алматы', x: 'Оплатите сразу или копите взносами. Когда дерево «вырастет», партнёры посадят настоящее — и вы увидите его на карте.' }
+    ];
+    const names = ['Получи росток', 'Дай имя', 'Посади'];
+    return {
+      s1: i === 0, s2: i === 1, s3: i === 2,
+      notLast: i < 2, isLast: i === 2,
+      stepNo: i + 1,
+      title: slides[i].t, text: slides[i].x,
+      bgShift: 'translateX(' + (-i * 60) + 'px)',
+      vineOffset: 460 - (i + 1) * 153,
+      next: () => this.setState({ i: Math.min(2, i + 1) }),
+      dots: [0, 1, 2].map((k) => ({
+        label: 'Слайд ' + (k + 1) + ': ' + names[k],
+        color: k === i ? '#4F7A2A' : '#B3C3AA',
+        scale: k === i ? 'scale(1.35)' : 'scale(1)',
+        go: () => this.setState({ i: k })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

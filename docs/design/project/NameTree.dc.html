@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Имя дереву</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+button{font-family:inherit;cursor:pointer}
+button:active,a:active{transform:scale(.96)}
+input{font-family:inherit}
+input:focus{outline:none;border-color:#4F7A2A !important;box-shadow:0 0 0 4px rgba(79,122,42,.15)}
+@keyframes wob{0%{transform:rotate(0)}25%{transform:rotate(-4deg)}55%{transform:rotate(3deg)}80%{transform:rotate(-1.5deg)}100%{transform:rotate(0)}}
+@keyframes glow{0%{transform:scale(0);opacity:.9}100%{transform:scale(1.4);opacity:0}}
+@keyframes burst{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--x),var(--y)) rotate(220deg);opacity:0}}
+.wob{animation:wob .6s cubic-bezier(.34,1.56,.64,1) both;transform-origin:50% 100%;transform-box:fill-box}
+.glow{animation:glow .9s cubic-bezier(.33,1,.68,1) both}
+.p{position:absolute;left:187px;top:300px;animation:burst .9s cubic-bezier(.2,.6,.4,1) both}
+@media (prefers-reduced-motion: reduce){.wob,.glow,.p{animation:none}.p,.glow{display:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <div style="position: absolute; top: 52px; left: 16px; right: 20px; display: flex; align-items: center; gap: 12px">
+    <a href="TreeDetail.dc.html" aria-label="Назад" style="width: 48px; height: 48px; border-radius: 16px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(35,64,16,0.08)">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+    </a>
+    <div style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px" aria-label="Шаг 2 из 3">
+      <span style="height: 6px; border-radius: 3px; background: #4F7A2A"></span><span style="height: 6px; border-radius: 3px; background: #4F7A2A"></span><span style="height: 6px; border-radius: 3px; background: #B3C3AA"></span>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 24px; right: 24px; top: 128px; text-align: center">
+    <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 32px; font-weight: 700; color: #234010">Как назовём?</h1>
+    <p style="margin: 8px 0 0; font-size: 15px; color: #4E5A44">Имя увидите вы — в приложении и на табличке в карточке дерева</p>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; top: 210px; height: 280px; display: flex; justify-content: center">
+    <sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+      <div class="glow" style="position: absolute; left: 75px; top: 0; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(227,176,75,0.55) 0%, rgba(220,230,211,0) 70%)"></div>
+    </sc-if>
+    <svg role="img" aria-label="Росток в горшке" width="240" height="280" viewBox="0 0 240 280" style="position: relative">
+      <circle cx="120" cy="130" r="104" fill="#DCE6D3"></circle>
+      <g class="wob" key="{{wobKey}}">
+        <path d="M120 190 C120 160 122 140 120 100" stroke="#4F7A2A" stroke-width="6" stroke-linecap="round" fill="none"></path>
+        <path d="M120 124 C96 120 80 100 84 76 C106 80 120 100 120 124Z" fill="#4F7A2A"></path>
+        <path d="M121 112 C144 106 160 86 158 62 C134 66 120 88 121 112Z" fill="#6E9A43"></path>
+      </g>
+      <path d="M72 186 H168 L156 262 H84 Z" fill="#C97B4A"></path>
+      <rect x="64" y="176" width="112" height="20" rx="7" fill="#B26A3C"></rect>
+      <rect x="84" y="210" width="72" height="30" rx="8" fill="#F6F1E7"></rect>
+      <text x="120" y="232" text-anchor="middle" font-family="Caveat, cursive" font-size="22" font-weight="700" fill="#234010">{{plate}}</text>
+    </svg>
+  </div>
+
+  <sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+    <sc-for list="{{parts}}" as="p" hint-placeholder-count="0">
+      <svg class="p" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="--x: {{p.x}}; --y: {{p.y}}; animation-delay: {{p.d}}"><path d="M12 22C6 18 4 12 6 4c8 0 14 6 12 14-2 3-4 4-6 4z" fill="{{p.c}}"></path></svg>
+    </sc-for>
+  </sc-if>
+
+  <div style="position: absolute; left: 24px; right: 24px; top: 510px; display: flex; flex-direction: column; gap: 12px">
+    <label for="treeName" style="font-size: 14px; font-weight: 600; color: #4E5A44">Имя дерева</label>
+    <input id="treeName" value="{{name}}" onChange="{{onName}}" maxlength="20" placeholder="Например, Листик" style="height: 60px; border-radius: 16px; border: 1.5px solid #B3C3AA; background: #FFFFFF; padding: 0 18px; font-size: 20px; font-weight: 700; color: #234010; box-sizing: border-box">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{ideas}}" as="i" hint-placeholder-count="4">
+        <button onClick="{{i.pick}}" style="height: 44px; padding: 0 16px; border-radius: 999px; border: 0; background: #DCE6D3; color: #234010; font-size: 14px; font-weight: 700">{{i.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <sc-if value="{{notDone}}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{confirm}}" style="position: absolute; left: 24px; right: 24px; bottom: 40px; height: 56px; border: 0; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700">Назвать дерево</button>
+  </sc-if>
+  <sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+    <a href="OrderSuccess.dc.html" style="position: absolute; left: 24px; right: 24px; bottom: 40px; height: 56px; border-radius: 16px; background: #4F7A2A; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px">Привет, {{plate}}! Оплатить
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    </a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { name: 'Листик', k: 0, done: false }; }
+  renderVals() {
+    const s = this.state;
+    const set = (v) => this.setState({ name: v, k: this.state.k + 1, done: false });
+    const cols = ['#4F7A2A', '#6E9A43', '#B3C3AA', '#E3B04B'];
+    const parts = [];
+    for (let i = 0; i < 14; i++) {
+      const a = (i / 14) * Math.PI * 2;
+      const r = 110 + (i % 3) * 30;
+      parts.push({ x: Math.round(Math.cos(a) * r) + 'px', y: Math.round(Math.sin(a) * r + 60) + 'px', d: (i % 4) * 30 + 'ms', c: cols[i % 4] });
+    }
+    return {
+      name: s.name, plate: s.name.trim() || '…',
+      wobKey: s.k,
+      onName: (e) => set(e.target.value),
+      ideas: ['Листик', 'Алма', 'Шёпот', 'Тянь-Шань'].map((l) => ({ label: l, pick: () => set(l) })),
+      confirm: () => { if (this.state.name.trim()) this.setState({ done: true }); },
+      done: s.done, notDone: !s.done, parts
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Из цифры — в почву Алматы</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+a:active{transform:scale(.96)}
+@keyframes layer{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes sink{0%{transform:none}60%{transform:translateY(12px) scale(.92)}100%{transform:translateY(12px) scale(.92)}}
+@keyframes pulse{0%,100%{opacity:.25;transform:scale(.9)}50%{opacity:.6;transform:scale(1.1)}}
+.l1{animation:layer .5s cubic-bezier(.33,1,.68,1) both}
+.l2{animation:layer .5s .08s cubic-bezier(.33,1,.68,1) both}
+.l3{animation:layer .5s .16s cubic-bezier(.33,1,.68,1) both}
+.sink{animation:sink 1.2s .6s cubic-bezier(.65,0,.35,1) both;transform-origin:50% 100%;transform-box:fill-box}
+.pulse{animation:pulse 2.4s 1.6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@media (prefers-reduced-motion: reduce){.l1,.l2,.l3,.sink,.pulse{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #D9E9F2; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <svg aria-hidden="true" width="390" height="520" viewBox="0 0 390 520" style="position: absolute; left: 0; top: 0">
+    <circle cx="300" cy="110" r="36" fill="#F6E3B4"></circle>
+    <g class="l1"><path d="M-10 330 L70 200 L120 250 L200 120 L270 220 L330 160 L400 260 L400 520 L-10 520Z" fill="#B9CCD6"></path><path d="M184 146 L200 120 L218 150 L206 144 L200 154 L192 144Z" fill="#FFFFFF"></path><path d="M318 178 L330 160 L344 182 L334 178 L330 186 L324 178Z" fill="#FFFFFF"></path></g>
+    <g class="l2"><path d="M-10 370 L60 290 L130 340 L210 260 L290 330 L360 290 L400 320 L400 520 L-10 520Z" fill="#B3C3AA"></path></g>
+    <g class="l3"><path d="M-10 420 C80 390 160 400 200 410 C260 396 330 392 400 410 L400 520 L-10 520Z" fill="#8FB070"></path></g>
+    <ellipse class="pulse" cx="195" cy="420" rx="70" ry="16" fill="#F6E3B4"></ellipse>
+    <g class="sink">
+      <rect x="190" y="340" width="10" height="80" rx="4" fill="#6B4A2B"></rect>
+      <circle cx="195" cy="318" r="44" fill="#4F7A2A"></circle><circle cx="164" cy="340" r="26" fill="#3F6620"></circle><circle cx="226" cy="336" r="28" fill="#6E9A43"></circle>
+    </g>
+  </svg>
+  <div style="position: absolute; left: 0; right: 0; top: 500px; bottom: 0; background: #F6F1E7; border-radius: 32px 32px 0 0; padding: 28px 24px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+    <span style="align-self: flex-start; height: 28px; padding: 0 12px; border-radius: 999px; background: #DCE6D3; color: #234010; font-size: 12px; font-weight: 800; display: flex; align-items: center; font-variant-numeric: tabular-nums">100% · 6 000 из 6 000 ₸</span>
+    <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 32px; font-weight: 700; color: #234010; line-height: 1.12">Из цифры — в почву Алматы</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4E5A44">Листик вырос. Передаём заказ партнёрам — они подберут место, посадят дерево и подтвердят посадку фото и координатами.</p>
+    <a href="TreeWaiting.dc.html" style="margin-top: auto; height: 56px; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center">Готово</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

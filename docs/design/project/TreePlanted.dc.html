@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Листик — посажено</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+a:active{transform:scale(.96)}
+@keyframes photo{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@keyframes badge{0%{opacity:0;transform:translateY(10px) scale(.8)}100%{opacity:1;transform:none}}
+@keyframes fillup{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes stem{from{height:168px}to{height:224px}}
+.photo{animation:photo .5s cubic-bezier(.33,1,.68,1) both}
+.badge{animation:badge .45s .35s cubic-bezier(.34,1.56,.64,1) both}
+.fill{animation:fillup .4s .2s cubic-bezier(.33,1,.68,1) both}
+.stem{animation:stem .6s cubic-bezier(.33,1,.68,1) both}
+.scroll::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion: reduce){.photo,.badge,.fill,.stem{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto; scrollbar-width: none">
+    <div class="photo" role="img" aria-label="Место для фото реальной посадки от исполнителя" style="height: 300px; position: relative; background: repeating-linear-gradient(135deg, #C9D6BF 0 14px, #BFCDB4 14px 28px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border-radius: 0 0 32px 32px">
+      <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+      <span style="font-size: 14px; font-weight: 700; color: #234010">[Фото посадки от исполнителя]</span>
+      <a href="TreeWaiting.dc.html" aria-label="Назад" style="position: absolute; top: 52px; left: 16px; width: 48px; height: 48px; border-radius: 16px; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+      </a>
+      <span class="badge" style="position: absolute; left: 16px; bottom: 16px; height: 34px; padding: 0 12px 0 8px; border-radius: 999px; background: #FFFFFF; color: #234010; font-size: 13px; font-weight: 800; display: flex; align-items: center; gap: 6px; box-shadow: 0 6px 16px rgba(35,64,16,0.16)">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4F7A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M8.5 12l2.5 2.5L15.5 10"></path></svg>
+        Подтверждено исполнителем</span>
+    </div>
+
+    <div style="padding: 18px 20px 110px; display: flex; flex-direction: column; gap: 16px">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start">
+        <div>
+          <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 700; color: #234010">Листик</h1>
+          <span style="font-size: 14px; color: #4E5A44; font-variant-numeric: tabular-nums">Карагач · PT-ALM-000127</span>
+        </div>
+        <span style="height: 30px; padding: 0 12px; border-radius: 999px; background: #DCE6D3; color: #234010; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; transition: all .3s"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4F7A2A"></span>Посажено</span>
+      </div>
+
+      <section aria-label="Данные посадки" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+        <div style="background: #FFFFFF; border-radius: 18px; padding: 12px 14px"><div style="font-size: 12px; color: #4E5A44">Дата посадки</div><div style="font-size: 15px; font-weight: 700">21 ноября 2026</div></div>
+        <div style="background: #FFFFFF; border-radius: 18px; padding: 12px 14px"><div style="font-size: 12px; color: #4E5A44">Район</div><div style="font-size: 15px; font-weight: 700">Бостандыкский</div></div>
+        <div style="background: #FFFFFF; border-radius: 18px; padding: 12px 14px; grid-column: span 2"><div style="font-size: 12px; color: #4E5A44">Адрес и координаты</div><div style="font-size: 15px; font-weight: 700">[Адрес посадки]</div><div style="font-size: 13px; color: #33402A; font-variant-numeric: tabular-nums">43.2185° N, 76.9282° E</div></div>
+      </section>
+
+      <section aria-label="Путь дерева" style="background: #FFFFFF; border-radius: 24px; padding: 18px; box-shadow: 0 8px 24px rgba(35,64,16,0.08)">
+        <h2 style="margin: 0 0 14px; font-size: 16px; font-weight: 800">Путь дерева</h2>
+        <ol style="margin: 0; padding: 0; list-style: none; position: relative">
+          <span aria-hidden="true" style="position: absolute; left: 13px; top: 14px; bottom: 14px; width: 3px; border-radius: 2px; background: #E4E9DE"></span>
+          <span class="stem" aria-hidden="true" style="position: absolute; left: 13px; top: 14px; height: 224px; width: 3px; border-radius: 2px; background: #4F7A2A"></span>
+          <sc-for list="{{steps}}" as="s" hint-placeholder-count="6">
+            <li style="position: relative; display: flex; gap: 14px; min-height: 56px">
+              <span style="position: relative; width: 29px; height: 29px; flex: none; display: flex; align-items: center; justify-content: center">
+                <span style="position: relative; width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF; border: 3px solid {{s.ring}}; box-sizing: border-box; overflow: hidden">
+                  <span class="{{s.cls}}" style="position: absolute; inset: 0; background: {{s.fill}}"></span>
+                </span>
+              </span>
+              <div style="display: flex; flex-direction: column; gap: 2px; padding-top: 3px">
+                <span style="font-size: 15px; font-weight: 700; color: {{s.tc}}">{{s.t}}</span>
+                <span style="font-size: 13px; color: #4E5A44; font-variant-numeric: tabular-nums">{{s.d}}</span>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+      </section>
+    </div>
+  </div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 20px 28px; background: rgba(246,241,231,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; gap: 10px">
+    <a href="#" aria-label="Поделиться" style="width: 56px; height: 56px; border-radius: 16px; background: #DCE6D3; display: flex; align-items: center; justify-content: center; flex: none">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"></path></svg>
+    </a>
+    <a href="Map.dc.html" style="flex: 1; height: 56px; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>Показать на карте</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const raw = [
+      ['Заказ оформлен', '9 ноября 2026', 'done'],
+      ['Дерево выращено до 100%', '9 ноября 2026', 'done'],
+      ['Передано исполнителю', '10 ноября 2026', 'done'],
+      ['Ожидало посадки', '11 дней', 'done'],
+      ['Посажено', '21 ноября 2026 · подтверждено', 'new'],
+      ['На мониторинге', 'Уход и полив первый год', 'todo']
+    ];
+    return {
+      steps: raw.map(([t, d, k]) => ({
+        t, d,
+        ring: k === 'todo' ? '#D2DAC9' : '#4F7A2A',
+        fill: k === 'todo' ? 'transparent' : '#4F7A2A',
+        cls: k === 'new' ? 'fill' : '',
+        tc: k === 'todo' ? '#6B7560' : '#1E2B14'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

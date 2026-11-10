@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Мой лес</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+a:active{transform:scale(.98)}
+@keyframes grow{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes bloom{0%{transform:scale(.8) rotate(-25deg)}100%{transform:scale(1) rotate(0)}}
+.g1,.g2,.g3,.g4{transform-origin:50% 100%;transform-box:fill-box;animation:grow .45s cubic-bezier(.34,1.56,.64,1) both}
+.g2{animation-delay:.07s}.g3{animation-delay:.14s}.g4{animation-delay:.21s}
+.rise{animation:rise .3s cubic-bezier(.33,1,.68,1) both}
+.bloom{animation:bloom .25s cubic-bezier(.34,1.56,.64,1) both}
+.scroll::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion: reduce){.g1,.g2,.g3,.g4,.rise,.bloom{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto; scrollbar-width: none">
+    <div style="padding: 56px 20px 120px; display: flex; flex-direction: column; gap: 16px">
+      <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 700; color: #234010">Мой лес</h1>
+
+      <section aria-label="Сводка" style="background: #B3C3AA; border-radius: 24px; overflow: hidden; position: relative">
+        <svg role="img" aria-label="Мини-лес из трёх деревьев" width="350" height="130" viewBox="0 0 350 130" style="display: block">
+          <path d="M0 70 L60 30 L110 55 L170 15 L240 50 L300 25 L350 45 L350 130 L0 130Z" fill="#A3B699"></path>
+          <path d="M0 110 C80 98 260 98 350 110 L350 130 L0 130Z" fill="#8FB070"></path>
+          <g class="g1"><rect x="78" y="78" width="6" height="30" rx="2" fill="#6B4A2B"></rect><path d="M81 30 L100 66 H90 L106 92 H56 L72 66 H62Z" fill="#2F5A1E"></path></g>
+          <g class="g2"><rect x="168" y="76" width="7" height="32" rx="3" fill="#6B4A2B"></rect><ellipse cx="171" cy="64" rx="30" ry="22" fill="#C46A2E"></ellipse><ellipse cx="184" cy="58" rx="12" ry="10" fill="#E08A43"></ellipse></g>
+          <g class="g3"><rect x="262" y="92" width="4" height="16" rx="2" fill="#6B4A2B"></rect><circle cx="264" cy="84" r="12" fill="#4F7A2A"></circle></g>
+          <g class="g4" opacity="0.35"><circle cx="310" cy="96" r="7" fill="none" stroke="#234010" stroke-width="1.5" stroke-dasharray="3 3"></circle><path d="M310 92v8M306 96h8" stroke="#234010" stroke-width="1.5"></path></g>
+        </svg>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; padding: 12px 18px 16px; background: #DCE6D3">
+          <div>
+            <div style="font-size: 32px; font-weight: 800; color: #234010; font-variant-numeric: tabular-nums; line-height: 1">3</div>
+            <div style="font-size: 13px; color: #33402A">дерева в вашем лесу</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px; text-align: right; font-size: 12px; color: #33402A; font-variant-numeric: tabular-nums">
+            <span>1 ожидает посадки</span><span>1 посажено</span><span>1 на мониторинге</span>
+          </div>
+        </div>
+      </section>
+
+      <sc-for list="{{trees}}" as="t" hint-placeholder-count="3">
+        <a class="rise" href="{{t.href}}" style="animation-delay: {{t.delay}}; background: #FFFFFF; border-radius: 24px; padding: 12px; display: flex; gap: 14px; box-shadow: 0 8px 24px rgba(35,64,16,0.08)">
+          <div style="width: 96px; height: 112px; border-radius: 18px; background: {{t.tint}}; flex: none; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden">
+            <sc-if value="{{t.photo}}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; inset: 0; background: repeating-linear-gradient(135deg, #C9D6BF 0 8px, #BFCDB4 8px 16px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+                <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+                <span style="font-size: 10px; font-weight: 700; color: #234010">Фото посадки</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{t.illu}}" hint-placeholder-val="{{ true }}">
+              <svg role="img" aria-label="Иллюстрация, фото появится после посадки" width="70" height="80" viewBox="0 0 70 80"><ellipse cx="35" cy="74" rx="24" ry="4" fill="#B3C3AA"></ellipse><rect x="32" y="40" width="6" height="34" rx="3" fill="#6B4A2B"></rect><circle cx="35" cy="32" r="20" fill="#4F7A2A"></circle><circle cx="22" cy="40" r="11" fill="#3F6620"></circle><circle cx="48" cy="38" r="12" fill="#6E9A43"></circle></svg>
+            </sc-if>
+          </div>
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+            <span style="align-self: flex-start; height: 26px; padding: 0 10px; border-radius: 999px; background: {{t.chipBg}}; color: {{t.chipFg}}; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{t.dot}}"></span>{{t.status}}</span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 700; color: #234010">{{t.name}}</span>
+            <span style="font-size: 13px; color: #4E5A44; font-variant-numeric: tabular-nums">{{t.kind}} · {{t.num}}</span>
+            <span style="font-size: 13px; color: #33402A">{{t.meta}}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <nav aria-label="Основная навигация" style="position: absolute; left: 16px; right: 16px; bottom: 20px; height: 72px; border-radius: 28px; background: rgba(255,255,255,0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 10px 30px rgba(35,64,16,0.14); display: flex; align-items: center; justify-content: space-between; padding: 0 8px; box-sizing: border-box">
+    <a href="Home.dc.html" style="width: 56px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #4E5A44; font-size: 11px; font-weight: 600">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>Главная</a>
+    <a href="Catalog.dc.html" style="width: 56px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #4E5A44; font-size: 11px; font-weight: 600">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg>Каталог</a>
+    <a href="Forest.dc.html" aria-current="page" style="height: 52px; padding: 0 16px; border-radius: 999px; background: #4F7A2A; color: #FFFFFF; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700">
+      <svg class="bloom" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>Мой лес</a>
+    <a href="Map.dc.html" style="width: 56px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #4E5A44; font-size: 11px; font-weight: 600">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"></path><path d="M9 4v14M15 6v14"></path></svg>Карта</a>
+    <a href="Profile.dc.html" style="width: 56px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #4E5A44; font-size: 11px; font-weight: 600">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Профиль</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = {
+      wait: { status: 'Ожидает посадки', chipBg: '#FBF1DC', chipFg: '#6E4A00', dot: '#E3B04B' },
+      done: { status: 'Посажено', chipBg: '#DCE6D3', chipFg: '#234010', dot: '#4F7A2A' },
+      mon: { status: 'На мониторинге', chipBg: '#DDEBF3', chipFg: '#1F5577', dot: '#4A8FB5' }
+    };
+    const list = [
+      { name: 'Листик', kind: 'Карагач', num: 'PT-ALM-000127', meta: 'Место и дата — после подтверждения', s: 'wait', href: 'TreeWaiting.dc.html', photo: false, tint: '#DCE6D3' },
+      { name: 'Алма', kind: 'Клён', num: 'PT-ALM-000098', meta: '12 октября 2026 · Медеуский р-н', s: 'done', href: 'TreePlanted.dc.html', photo: true, tint: '#DCE6D3' },
+      { name: 'Тянь-Шань', kind: 'Ель', num: 'PT-ALM-000041', meta: '18 апреля 2026 · Бостандыкский р-н', s: 'mon', href: 'TreePlanted.dc.html', photo: true, tint: '#DCE6D3' }
+    ];
+    return { trees: list.map((t, i) => ({ ...t, ...S[t.s], illu: !t.photo, delay: (i * 60) + 'ms' })) };
+  }
+}
+</script>
+</body>
+</html>

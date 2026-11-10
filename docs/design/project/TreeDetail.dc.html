@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Карагач — покупка</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+button{font-family:inherit;cursor:pointer}
+button:active,a:active{transform:scale(.96)}
+@keyframes sway{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+@keyframes flip{from{transform:translateY(60%);opacity:0}to{transform:none;opacity:1}}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.sway{animation:sway 4s ease-in-out infinite;transform-origin:50% 100%;transform-box:fill-box}
+.flip{display:inline-block;animation:flip .2s cubic-bezier(.33,1,.68,1) both}
+.up{animation:up .3s cubic-bezier(.33,1,.68,1) both}
+.scroll::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion: reduce){.sway,.flip,.up{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto; scrollbar-width: none">
+    <div style="height: 320px; background: #DCE6D3; border-radius: 0 0 32px 32px; position: relative; display: flex; align-items: flex-end; justify-content: center; overflow: hidden">
+      <svg aria-hidden="true" width="390" height="120" viewBox="0 0 390 120" style="position: absolute; left: 0; bottom: 0"><path d="M0 120 L80 50 L140 80 L220 20 L300 70 L390 40 L390 120Z" fill="#B3C3AA"></path></svg>
+      <svg role="img" aria-label="Иллюстрация: карагач" width="230" height="250" viewBox="0 0 110 120" style="position: relative">
+        <ellipse cx="55" cy="114" rx="34" ry="5" fill="#9DB092"></ellipse>
+        <rect x="51" y="62" width="8" height="52" rx="3" fill="#6B4A2B"></rect>
+        <g class="sway"><circle cx="55" cy="50" r="30" fill="#4F7A2A"></circle><circle cx="36" cy="62" r="18" fill="#3F6620"></circle><circle cx="74" cy="60" r="20" fill="#6E9A43"></circle></g>
+      </svg>
+      <a href="Catalog.dc.html" aria-label="Назад в каталог" style="position: absolute; top: 52px; left: 16px; width: 48px; height: 48px; border-radius: 16px; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+      </a>
+    </div>
+
+    <div style="padding: 20px 20px 140px; display: flex; flex-direction: column; gap: 20px">
+      <div>
+        <span style="display: inline-flex; height: 26px; padding: 0 10px; align-items: center; border-radius: 999px; background: #234010; color: #FFFFFF; font-size: 12px; font-weight: 700">Популярное</span>
+        <h1 style="margin: 10px 0 2px; font-family: 'Playfair Display', Georgia, serif; font-size: 32px; font-weight: 700; color: #234010">Карагач</h1>
+        <p style="margin: 0; font-size: 14px; font-style: italic; color: #4E5A44">Ulmus pumila · вяз приземистый</p>
+        <p style="margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: #33402A">Один из самых выносливых видов для Алматы: переносит жару, засуху и городскую пыль, быстро даёт тень.</p>
+      </div>
+
+      <section aria-label="Что входит в посадку" style="background: #FFFFFF; border-radius: 24px; padding: 16px 18px; box-shadow: 0 8px 24px rgba(35,64,16,0.08); display: flex; flex-direction: column; gap: 4px">
+        <h2 style="margin: 0 0 6px; font-size: 16px; font-weight: 800; color: #234010">Что входит в посадку</h2>
+        <sc-for list="{{inc}}" as="r" hint-placeholder-count="5">
+          <div style="display: flex; align-items: center; gap: 12px; min-height: 44px">
+            <span style="width: 36px; height: 36px; border-radius: 12px; background: #DCE6D3; display: flex; align-items: center; justify-content: center; flex: none">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="{{r.icon}}"></path></svg>
+            </span>
+            <span style="flex: 1; font-size: 14px; color: #1E2B14">{{r.label}}</span>
+            <span style="font-size: 14px; font-weight: 700; color: #234010; font-variant-numeric: tabular-nums">{{r.sum}}</span>
+          </div>
+        </sc-for>
+      </section>
+
+      <section aria-label="Способ оплаты" style="display: flex; flex-direction: column; gap: 12px">
+        <div role="tablist" style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #DCE6D3; border-radius: 16px; padding: 4px; height: 52px; box-sizing: border-box">
+          <div aria-hidden="true" style="position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 12px; background: #FFFFFF; box-shadow: 0 2px 8px rgba(35,64,16,0.12); transition: transform .25s cubic-bezier(.33,1,.68,1); transform: {{slider}}"></div>
+          <button role="tab" aria-selected="{{selNow}}" onClick="{{payNow}}" style="position: relative; border: 0; background: transparent; font-size: 15px; font-weight: 700; color: #234010">Сразу</button>
+          <button role="tab" aria-selected="{{selSave}}" onClick="{{paySave}}" style="position: relative; border: 0; background: transparent; font-size: 15px; font-weight: 700; color: #234010">Копить взносами</button>
+        </div>
+        <sc-if value="{{isSave}}" hint-placeholder-val="{{ false }}">
+          <div style="background: #FFFFFF; border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+            <span style="font-size: 14px; color: #33402A">Взнос в месяц — дерево растёт с каждым пополнением</span>
+            <div style="display: flex; gap: 8px">
+              <sc-for list="{{plans}}" as="p" hint-placeholder-count="3">
+                <button onClick="{{p.pick}}" style="flex: 1; height: 48px; border-radius: 14px; border: 1.5px solid {{p.border}}; background: {{p.bg}}; color: #234010; font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums">{{p.label}}</button>
+              </sc-for>
+            </div>
+            <span style="font-size: 13px; color: #4E5A44">≈ {{months}} до посадки · можно пополнять в любой момент</span>
+          </div>
+        </sc-if>
+      </section>
+
+      <section aria-label="Количество деревьев" style="display: flex; align-items: center; justify-content: space-between; background: #FFFFFF; border-radius: 20px; padding: 10px 10px 10px 18px">
+        <span style="font-size: 15px; font-weight: 700">Количество деревьев</span>
+        <div style="display: flex; align-items: center; gap: 4px">
+          <button aria-label="Меньше" onClick="{{dec}}" style="width: 48px; height: 48px; border: 0; border-radius: 14px; background: #DCE6D3; display: flex; align-items: center; justify-content: center">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round"><path d="M5 12h14"></path></svg>
+          </button>
+          <span aria-live="polite" style="width: 40px; height: 48px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; color: #234010; font-variant-numeric: tabular-nums"><span class="flip" key="{{qty}}">{{qty}}</span></span>
+          <button aria-label="Больше" onClick="{{inc1}}" style="width: 48px; height: 48px; border: 0; border-radius: 14px; background: #4F7A2A; display: flex; align-items: center; justify-content: center">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="up" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px 30px; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 28px 28px 0 0; box-shadow: 0 -8px 24px rgba(35,64,16,0.08); display: flex; align-items: center; gap: 16px">
+    <div style="display: flex; flex-direction: column; flex: 1">
+      <span style="font-size: 13px; color: #4E5A44">{{totalLabel}}</span>
+      <span style="font-size: 24px; font-weight: 800; color: #234010; font-variant-numeric: tabular-nums"><span class="flip" key="{{total}}">{{total}} ₸</span></span>
+    </div>
+    <a href="NameTree.dc.html" style="height: 56px; padding: 0 28px; border-radius: 16px; background: #234010; color: #FFFFFF; font-weight: 700; font-size: 16px; display: flex; align-items: center">Оформить</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { mode: 'now', qty: 1, plan: 2000 }; }
+  renderVals() {
+    const s = this.state;
+    const fmt = (v) => v.toLocaleString('ru-RU').replace(/ /g, ' ');
+    const save = s.mode === 'save';
+    const price = 6000 * s.qty;
+    const m = Math.ceil(price / s.plan);
+    const word = (n) => (n % 10 === 1 && n % 100 !== 11) ? 'месяц' : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? 'месяца' : 'месяцев');
+    return {
+      inc: [
+        { label: 'Саженец 2–3 года', sum: '2 800 ₸', icon: 'M12 21v-9M12 12C12 8 9 6 5 6c0 4 3 6 7 6zM12 10c0-3 2.5-5 6-5 0 3.5-2.5 5-6 5z' },
+        { label: 'Посадка', sum: '1 200 ₸', icon: 'M4 20h16M7 20v-4M12 4v12M8 8l4-4 4 4' },
+        { label: 'Доставка', sum: '600 ₸', icon: 'M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
+        { label: 'Уход и полив, 1-й год', sum: '1 000 ₸', icon: 'M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z' },
+        { label: 'Digital-отслеживание', sum: '400 ₸', icon: 'M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11zM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' }
+      ],
+      slider: save ? 'translateX(100%)' : 'translateX(0)',
+      selNow: save ? 'false' : 'true', selSave: save ? 'true' : 'false',
+      payNow: () => this.setState({ mode: 'now' }),
+      paySave: () => this.setState({ mode: 'save' }),
+      isSave: save,
+      plans: [1000, 2000, 3000].map((v) => ({
+        label: fmt(v) + ' ₸',
+        bg: v === s.plan ? '#DCE6D3' : '#FFFFFF', border: v === s.plan ? '#4F7A2A' : '#B3C3AA',
+        pick: () => this.setState({ plan: v })
+      })),
+      months: m + ' ' + word(m),
+      qty: s.qty,
+      dec: () => this.setState({ qty: Math.max(1, s.qty - 1) }),
+      inc1: () => this.setState({ qty: Math.min(20, s.qty + 1) }),
+      total: fmt(save ? s.plan : price),
+      totalLabel: save ? 'Первый взнос · всего ' + fmt(price) + ' ₸' : 'Итого'
+    };
+  }
+}
+</script>
+</body>
+</html>

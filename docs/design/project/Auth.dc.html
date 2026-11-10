@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Регистрация и вход</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+button{font-family:inherit;cursor:pointer}
+input{font-family:inherit}
+input:focus{outline:none;border-color:#4F7A2A !important;box-shadow:0 0 0 4px rgba(79,122,42,.15)}
+@keyframes float1{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(18px,40px) rotate(40deg)}100%{transform:translate(0,80px) rotate(80deg);opacity:0}}
+@keyframes float2{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(-20px,50px) rotate(-30deg)}100%{transform:translate(0,100px) rotate(-60deg);opacity:0}}
+@keyframes pop{0%{transform:translateY(8px);opacity:0}100%{transform:none;opacity:1}}
+@keyframes caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+.f1{animation:float1 9s ease-in-out infinite}.f2{animation:float2 11s ease-in-out infinite}
+.pop{animation:pop .15s cubic-bezier(.2,0,0,1) both}
+.caret{animation:caret 1s step-end infinite}
+@media (prefers-reduced-motion: reduce){.f1,.f2,.pop{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: linear-gradient(180deg, #F6F1E7 0%, #DCE6D3 100%); font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <svg class="f1" aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" style="position: absolute; left: 300px; top: 120px; opacity: 0.25"><path d="M12 22C6 18 4 12 6 4c8 0 14 6 12 14-2 3-4 4-6 4z" fill="#4F7A2A"></path></svg>
+  <svg class="f2" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="position: absolute; left: 40px; top: 300px; opacity: 0.25"><path d="M12 22C6 18 4 12 6 4c8 0 14 6 12 14-2 3-4 4-6 4z" fill="#4F7A2A"></path></svg>
+  <svg class="f1" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="position: absolute; left: 330px; top: 520px; opacity: 0.25"><path d="M12 22C6 18 4 12 6 4c8 0 14 6 12 14-2 3-4 4-6 4z" fill="#6E9A43"></path></svg>
+  <svg class="f2" aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" style="position: absolute; left: 160px; top: 700px; opacity: 0.25"><path d="M12 22C6 18 4 12 6 4c8 0 14 6 12 14-2 3-4 4-6 4z" fill="#4F7A2A"></path></svg>
+
+  <div style="position: absolute; top: 56px; left: 16px; right: 24px; display: flex; align-items: center; justify-content: space-between">
+    <sc-if value="{{isOtp}}" hint-placeholder-val="{{ false }}">
+      <button aria-label="Назад" onClick="{{back}}" style="width: 48px; height: 48px; border: 0; border-radius: 16px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(35,64,16,0.08)">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+      </button>
+    </sc-if>
+    <sc-if value="{{isPhone}}" hint-placeholder-val="{{ true }}">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: #D9E9F2; padding: 6px 14px 6px 10px; margin-left: 8px; border-radius: 22px 26px 20px 24px">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F7A2A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+        <span style="font-family: 'Caveat', cursive; font-size: 22px; font-weight: 700; color: #234010; line-height: 1">Personal tree</span>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{isPhone}}" hint-placeholder-val="{{ true }}">
+    <div style="position: absolute; left: 24px; right: 24px; top: 150px; display: flex; flex-direction: column; gap: 24px">
+      <div>
+        <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; line-height: 1.15; font-weight: 700; color: #234010">Добро пожаловать<br>в свой лес</h1>
+        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #4E5A44">Войдите или создайте аккаунт — пароль не нужен, пришлём код.</p>
+      </div>
+      <div role="tablist" aria-label="Способ входа" style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #FFFFFF; border-radius: 16px; padding: 4px; height: 52px; box-sizing: border-box">
+        <div aria-hidden="true" style="position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 12px; background: #DCE6D3; transition: transform .25s cubic-bezier(.2,0,0,1); transform: {{slider}}"></div>
+        <button role="tab" aria-selected="{{byPhone}}" onClick="{{usePhone}}" style="position: relative; border: 0; background: transparent; font-size: 15px; font-weight: 700; color: #234010">Телефон</button>
+        <button role="tab" aria-selected="{{byEmail}}" onClick="{{useEmail}}" style="position: relative; border: 0; background: transparent; font-size: 15px; font-weight: 700; color: #234010">Email</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <label for="login" style="font-size: 14px; font-weight: 600; color: #4E5A44">{{fieldLabel}}</label>
+        <input id="login" type="{{fieldType}}" placeholder="{{fieldHint}}" style="height: 60px; border-radius: 16px; border: 1.5px solid #B3C3AA; background: #FFFFFF; padding: 0 18px; font-size: 18px; font-weight: 600; color: #1E2B14; box-sizing: border-box">
+        <span style="font-size: 13px; color: #5B6650">Нажимая «Продолжить», вы принимаете <a href="#" style="text-decoration: underline">условия</a> и <a href="#" style="text-decoration: underline">политику конфиденциальности</a>.</span>
+      </div>
+    </div>
+    <button onClick="{{sendCode}}" style="position: absolute; left: 24px; right: 24px; bottom: 40px; height: 56px; border: 0; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700; box-shadow: 0 8px 24px rgba(35,64,16,0.18)">Продолжить</button>
+  </sc-if>
+
+  <sc-if value="{{isOtp}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 24px; right: 24px; top: 150px; display: flex; flex-direction: column; gap: 28px">
+      <div>
+        <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; line-height: 1.15; font-weight: 700; color: #234010">Введите код</h1>
+        <p style="margin: 10px 0 0; font-size: 16px; line-height: 1.5; color: #4E5A44">Отправили 4 цифры на {{sentTo}}</p>
+      </div>
+      <div role="group" aria-label="Код подтверждения" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+        <sc-for list="{{cells}}" as="c" hint-placeholder-count="4">
+          <div style="height: 72px; border-radius: 16px; background: {{c.bg}}; border: 2px solid {{c.border}}; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 800; color: #234010; font-variant-numeric: tabular-nums; transition: border-color .15s, background .15s">
+            <sc-if value="{{c.filled}}" hint-placeholder-val="{{ true }}"><span class="pop">{{c.d}}</span></sc-if>
+            <sc-if value="{{c.active}}" hint-placeholder-val="{{ false }}"><span class="caret" style="width: 2px; height: 30px; background: #4F7A2A"></span></sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{keys}}" as="k" hint-placeholder-count="3">
+          <button onClick="{{k.tap}}" style="min-width: 48px; height: 48px; border: 0; border-radius: 14px; background: #FFFFFF; font-size: 18px; font-weight: 700; color: #234010; font-variant-numeric: tabular-nums">{{k.d}}</button>
+        </sc-for>
+        <button aria-label="Стереть" onClick="{{erase}}" style="min-width: 48px; height: 48px; border: 0; border-radius: 14px; background: #DCE6D3; display: flex; align-items: center; justify-content: center">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#234010" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 5H9l-7 7 7 7h12z"></path><path d="M17 9l-6 6M11 9l6 6"></path></svg>
+        </button>
+      </div>
+      <p style="margin: 0; font-size: 15px; color: #4E5A44">Отправить код повторно через <b style="color: #234010; font-variant-numeric: tabular-nums">0:42</b></p>
+    </div>
+    <sc-if value="{{complete}}" hint-placeholder-val="{{ false }}">
+      <a href="Home.dc.html" style="position: absolute; left: 24px; right: 24px; bottom: 40px; height: 56px; border-radius: 16px; background: #234010; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(35,64,16,0.18)">Войти</a>
+    </sc-if>
+    <sc-if value="{{incomplete}}" hint-placeholder-val="{{ true }}">
+      <div aria-disabled="true" style="position: absolute; left: 24px; right: 24px; bottom: 40px; height: 56px; border-radius: 16px; background: #B3C3AA; color: #234010; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center">Введите код целиком</div>
+    </sc-if>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(p) { super(p); this.state = { step: 'phone', mode: 'phone', code: '48' }; }
+  renderVals() {
+    const s = this.state;
+    const phone = s.mode === 'phone';
+    const code = s.code;
+    const cells = [0, 1, 2, 3].map((i) => ({
+      d: code[i] || '',
+      filled: i < code.length,
+      active: i === code.length,
+      bg: i < code.length ? '#FFFFFF' : 'rgba(255,255,255,0.6)',
+      border: i < code.length ? '#4F7A2A' : (i === code.length ? '#4F7A2A' : '#B3C3AA')
+    }));
+    const keys = ['1','2','3','4','5','6','7','8','9','0'].map((d) => ({
+      d, tap: () => { if (this.state.code.length < 4) this.setState({ code: this.state.code + d }); }
+    }));
+    return {
+      isPhone: s.step === 'phone', isOtp: s.step === 'otp',
+      byPhone: phone ? 'true' : 'false', byEmail: phone ? 'false' : 'true',
+      slider: phone ? 'translateX(0)' : 'translateX(100%)',
+      fieldLabel: phone ? 'Номер телефона' : 'Электронная почта',
+      fieldType: phone ? 'tel' : 'email',
+      fieldHint: phone ? '+7 700 000 00 00' : 'name@mail.kz',
+      sentTo: phone ? '+7 701 ••• •• 78' : 'al•••@mail.kz',
+      usePhone: () => this.setState({ mode: 'phone' }),
+      useEmail: () => this.setState({ mode: 'email' }),
+      sendCode: () => this.setState({ step: 'otp', code: '48' }),
+      back: () => this.setState({ step: 'phone' }),
+      erase: () => this.setState({ code: this.state.code.slice(0, -1) }),
+      cells, keys,
+      complete: code.length === 4, incomplete: code.length < 4
+    };
+  }
+}
+</script>
+</body>
+</html>

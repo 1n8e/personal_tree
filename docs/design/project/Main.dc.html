@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Personal Tree — Splash</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#234010;text-decoration:none}a:hover{color:#4F7A2A}
+@keyframes seed{0%{transform:translateY(-260px);opacity:0}10%{opacity:1}28%{transform:translateY(0)}100%{transform:translateY(0)}}
+@keyframes sprout{0%,30%{transform:scaleY(0)}55%{transform:scaleY(1.08)}62%,100%{transform:scaleY(1)}}
+@keyframes leafL{0%,50%{transform:rotate(40deg) scale(0)}70%,100%{transform:rotate(0) scale(1)}}
+@keyframes logo{0%,68%{opacity:0;transform:translateY(12px) scale(.94)}85%,100%{opacity:1;transform:none}}
+@keyframes hint{0%,80%{opacity:0}100%{opacity:1}}
+.seed{animation:seed 3.2s cubic-bezier(.55,0,1,.45) infinite;transform-box:fill-box}
+.sprout{animation:sprout 3.2s cubic-bezier(.34,1.56,.64,1) infinite;transform-origin:195px 470px}
+.lf{animation:leafL 3.2s cubic-bezier(.34,1.56,.64,1) infinite;transform-box:fill-box;transform-origin:bottom center}
+.logo{animation:logo 3.2s cubic-bezier(.2,0,0,1) infinite}
+.hint{animation:hint 3.2s ease-out infinite}
+@media (prefers-reduced-motion: reduce){.seed,.sprout,.lf,.logo,.hint{animation:none}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F6F1E7; font-family: 'Manrope', system-ui, sans-serif; color: #1E2B14">
+  <svg aria-hidden="true" width="390" height="844" viewBox="0 0 390 844" fill="none" stroke="#234010" stroke-width="1.2" style="position: absolute; inset: 0; opacity: 0.05">
+    <path d="M-20 90C70 50 150 140 250 95S380 70 420 110"></path><path d="M-20 130C70 90 150 180 250 135S380 110 420 150"></path><path d="M-20 170C70 130 150 220 250 175S380 150 420 190"></path>
+    <path d="M-20 640C90 600 170 690 260 650S380 620 420 660"></path><path d="M-20 680C90 640 170 730 260 690S380 660 420 700"></path><path d="M-20 720C90 680 170 770 260 730S380 700 420 740"></path><path d="M-20 760C90 720 170 810 260 770S380 740 420 780"></path>
+  </svg>
+  <svg aria-hidden="true" width="390" height="844" viewBox="0 0 390 844" style="position: absolute; inset: 0">
+    <ellipse cx="195" cy="486" rx="120" ry="22" fill="#B3C3AA"></ellipse>
+    <ellipse cx="195" cy="480" rx="96" ry="14" fill="#8A6A44" opacity="0.85"></ellipse>
+    <g class="sprout"><path d="M195 470 C195 440 196 420 195 392" stroke="#4F7A2A" stroke-width="5" stroke-linecap="round" fill="none"></path></g>
+    <path class="lf" d="M195 402 C176 398 164 384 166 364 C184 366 196 380 195 402Z" fill="#4F7A2A"></path>
+    <path class="lf" d="M196 396 C214 392 228 376 226 354 C206 358 194 374 196 396Z" fill="#6E9A43"></path>
+    <ellipse class="seed" cx="195" cy="466" rx="9" ry="12" fill="#6B4A2B"></ellipse>
+  </svg>
+  <div class="logo" style="position: absolute; left: 0; right: 0; top: 200px; display: flex; flex-direction: column; align-items: center; gap: 14px">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: #D9E9F2; padding: 12px 24px 12px 18px; border-radius: 34px 40px 30px 38px / 30px 34px 28px 36px; box-shadow: 0 8px 24px rgba(35,64,16,0.08)">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4F7A2A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+      <span style="font-family: 'Caveat', cursive; font-size: 40px; font-weight: 700; color: #234010; line-height: 1">Personal tree</span>
+    </div>
+  </div>
+  <div style="position: absolute; left: 24px; right: 24px; bottom: 120px; text-align: center">
+    <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 700; color: #234010; line-height: 1.2">Посади сегодня,<br>дыши завтра</p>
+    <p style="margin: 10px 0 0; font-size: 15px; color: #4E5A44">Озеленяем Алматы вместе</p>
+  </div>
+  <a class="hint" href="Onboarding.dc.html" style="position: absolute; left: 24px; right: 24px; bottom: 40px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: #234010; color: #FFFFFF; font-weight: 700; font-size: 16px">Продолжить</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
